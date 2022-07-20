@@ -1,12 +1,17 @@
 @import "fonts";
 @import "global";
+@import "header";
+@import "hero";
 
-div {
-  display: flex;
-  justify-content: center;
-  font-family: Galien, serif;
-  color: $blue_1;
-  min-width: 100%;
-  min-height: 100vh;
-  background-image: url("../images/illustration.svg");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1366px;
+  width: 100%;
 }

@@ -1,0 +1,58 @@
+.hero {
+  background-image: linear-gradient(0deg, rgba(152, 195, 232, 0.2) 8.84%, rgba(152, 195, 232, 0) 31.12%);
+  //background-position: top 11px right 23px;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  padding: 0 213px;
+  position: relative;
+  min-height: 690px;
+}
+
+.hero:after {
+  content: "";
+  background: url("../images/illustration.svg") no-repeat;
+  position: absolute;
+  top: 11px;
+  right: -95px;
+  height: 682px;
+  width: 806px;
+}
+
+.hero_header {
+  color: $blue_1;
+  font-family: Galien,serif;
+  font-size: 64px;
+  line-height: 74px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  margin-top: 102px;
+  width: 8em;
+}
+
+.hero_text {
+  color: $blue_1;
+  font-family: Gilroy, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.06em;
+  text-align: left;
+  margin-top: 40px;
+  width: 26.1em;
+}
+
+.hero_button {
+  background-color: $blue_04;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 10px 20px 0 #356EAD33;
+  color: $white;
+  font-family: Gilroy,sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  height: 56px;
+  width: 220px;
+  margin-top: 76px;
+}
