@@ -12,16 +12,17 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[contenthash].js',
         assetModuleFilename: `assets/[hash][ext][query]`,
-        filename: 'main.js',
         clean: true,
     },
+    devtool: 'source-map',
     plugins: [
         new MiniCssExtractPlugin({
             filename:`[name].[contenthash].css`
         }),
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
+            template: "./src/index.pug"
         })
     ],
     module: {
@@ -60,6 +61,20 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.pug$/,
+                loader: 'pug-loader',
             },
         ]
     }

@@ -9,6 +9,11 @@
     "dev": "set NODE_ENV=development&&webpack",
     "build": "set NODE_ENV=production&&webpack"
   },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "IE 10"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EvgeniyGrokholskiy/d-element.git"
@@ -20,6 +25,9 @@
   },
   "homepage": "https://github.com/EvgeniyGrokholskiy/d-element#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",

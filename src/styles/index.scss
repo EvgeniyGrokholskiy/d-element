@@ -2,6 +2,8 @@
 @import "global";
 
 div {
+  display: flex;
+  justify-content: center;
   font-family: Galien, serif;
   color: $blue_1;
   min-width: 100%;
