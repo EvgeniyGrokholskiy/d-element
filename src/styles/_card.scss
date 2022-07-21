@@ -47,11 +47,13 @@
   @include fonts_gilroy(16px,26px,0.05em);
   margin-bottom: 32px;
   margin-left: 48px;
+  opacity: 0.6;
   width: 17em;
 }
 
 .card__button {
   color: $blue_04;
+  cursor: pointer;
   background: none;
   border: none;
   display: flex;
@@ -70,4 +72,24 @@
   position: absolute;
   right: 0;
   top: 4px;
+}
+
+.card__button:hover {
+  transform: scale(1.1);
+}
+
+.card__button:active {
+  transform: scale(1);
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    height: auto;
+    width: 330px;
+  }
+
+  .card__header, .card__text, .card__button {
+    margin-left: 5%;
+    width: 80%;
+  }
 }

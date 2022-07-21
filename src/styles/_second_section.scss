@@ -7,6 +7,8 @@
 .card_block__first_item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 152px;
 }
 
@@ -21,7 +23,28 @@
 }
 
 .card_block__header {
-  @include fonts_gilroy(36px,46px,0.05em);
+  @include fonts_gilroy(36px, 46px, 0.05em);
   color: $blue_02;
   width: 10.1em;
+}
+
+@media screen and (max-width: 1265px) {
+  .card_block {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 5%;
+  }
+  .card-second {
+    margin: 0 0 50px;
+  }
+  .card_block__first_item, .card_block__second_item {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .card_block__header {
+    font-size: 8.57vw;
+  }
 }

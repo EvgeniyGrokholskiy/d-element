@@ -1,4 +1,4 @@
-$blue_1: #1F3F68;
+$blue_1: rgb(31, 63, 104);
 $blue_02: #316099;
 $blue_04: #5A98D0;
 $white: #FFFFFF;
@@ -9,4 +9,14 @@ $white: #FFFFFF;
   line-height: $line-height;
   letter-spacing: $letter-spacing;
   text-align: left;
+}
+
+.button_hover {
+  box-shadow: 2px 2px 0 gray;
+  transform: scale(1.1);
+}
+
+.button_active {
+  box-shadow: none;
+  transform: scale(1);
 }

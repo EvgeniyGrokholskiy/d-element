@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  padding: 0 213px;
+  padding: 0 16%;
   position: relative;
   min-height: 690px;
 }
@@ -17,11 +17,12 @@
   right: -95px;
   height: 682px;
   width: 806px;
+  z-index: -1;
 }
 
 .hero__header {
   color: $blue_1;
-  font-family: Galien,serif;
+  font-family: Galien, serif;
   font-size: 64px;
   line-height: 74px;
   letter-spacing: 0.04em;
@@ -31,14 +32,14 @@
 }
 
 .hero__text {
-  @include fonts_gilroy(16px,26px,0.06em);
+  @include fonts_gilroy(16px, 26px, 0.06em);
   color: $blue_1;
   margin-top: 40px;
   width: 26.1em;
 }
 
 .hero__button {
-  @include fonts_gilroy(16px,26px,0.04em);
+  @include fonts_gilroy(16px, 26px, 0.04em);
   background-color: $blue_04;
   border: none;
   border-radius: 10px;
@@ -48,4 +49,34 @@
   height: 56px;
   width: 220px;
   margin-top: 76px;
+}
+
+.hero__button:hover {
+  @extend .button_hover
+}
+
+.hero__button:active {
+  @extend .button_active
+}
+
+@media screen and (max-width: 1000px) {
+  .hero:after {
+    background-image: none;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .hero {
+    padding: 0 5%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .hero__header {
+    font-size: 11vw;
+  }
+
+  .hero__text {
+    font-size: 3.3vw;
+  }
 }

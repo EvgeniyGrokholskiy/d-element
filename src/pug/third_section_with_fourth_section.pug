@@ -1,4 +1,5 @@
 - let i = 1;
+- let l = 5;
 
 .client_list_block
     .client_list_block__header_section
@@ -8,3 +9,5 @@
         while i < 8
             .client_list_block__logo(class=`client_list_block__logo-${i}`)= `LOGO CLIENT ${i++}`
         .client_list_block__logo(class= "client_list_block__logo-more") MORE CLIENT
+    footer
+        include fourth_section_with_footer

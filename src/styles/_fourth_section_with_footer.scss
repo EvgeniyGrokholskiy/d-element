@@ -1,0 +1,195 @@
+.fourth_section {
+  background: $blue_02;
+  border-radius: 0 200px 0 0;
+  color: $white;
+  min-height: 869px;
+  width: 93%;
+}
+
+.lets_talk_block {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 91px 0 96px 213px;
+  margin-right: 197px;
+}
+
+.lets_talk_block__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.lets_talk_block__content__header {
+  @include fonts_gilroy(36px, 49px, 0.05em);
+  margin-bottom: 32px;
+  width: 10em;
+}
+
+.lets_talk_block__content__text {
+  @include fonts_gilroy(16px, 26px, 0.05em);
+  opacity: 0.6;
+  width: 29em;
+}
+
+.lets_talk_block__button {
+  @include fonts_gilroy(16px, 26px, 0.04em);
+  background-color: $blue_04;
+  border: none;
+  border-radius: 10px;
+  color: $white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  width: 220px;
+}
+
+.lets_talk_block__button:hover {
+  @extend .button_hover;
+  box-shadow: 2px 2px 2px $blue_1;
+}
+
+.lets_talk_block__button:active {
+  @extend .button_active
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 96px 0 64px 213px;
+}
+
+.footer_text {
+  color: $white;
+  display: flex;
+  margin-bottom: 64px;
+}
+
+.address_block {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+  width: 300px;
+}
+
+.address_block__header {
+  display: flex;
+  margin-bottom: 33px;
+}
+
+.address_block__logo {
+  margin-right: 15px;
+  height: 32px;
+  width: 48px;
+}
+
+.address_block__company_name {
+  @include fonts_gilroy(28px, 46px, 0.02em);
+}
+
+.address_block__address, .address_block__telephone, .address_block__email {
+  @include fonts_gilroy(16px, 26px, 0.05em);
+  font-style: normal;
+  margin-left: 35px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.address_block__telephone, .address_block__email {
+  color: $white;
+  text-decoration: none;
+}
+
+.address_block__address:before {
+  content: "A.";
+  position: absolute;
+  left: -30px;
+}
+
+.address_block__telephone:before {
+  content: "T.";
+  position: absolute;
+  left: -30px;
+}
+
+.address_block__email:before {
+  content: "E.";
+  position: absolute;
+  left: -30px;
+}
+
+.about_us, .follow_us {
+  margin-right: 77px;
+  width: 163px;
+}
+
+.about_us__header, .follow_us__header {
+  @include fonts_gilroy(20px, 30px, 0.05em);
+  margin-bottom: 32px;
+}
+
+.about_us__list, .follow_us__list {
+  list-style: none;
+  padding: 0;
+}
+
+.about_us__list_item, .follow_us__list_item {
+  @include fonts_gilroy(16px, 26px, 0.05em);
+  margin-bottom: 16px;
+}
+
+.about_us__list_link, .follow_us__list_link {
+  color: $white;
+  text-decoration: none;
+}
+
+.about_us__list_link:hover, .follow_us__list_link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.footer__copyright {
+  @include fonts_gilroy(16px, 26px, 0.05em);
+  opacity: 0.4;
+}
+
+@media screen and (max-width: 1366px) {
+  .lets_talk_block, .footer {
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 6.6vw 0 7vw 15.6vw;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .lets_talk_block {
+    margin-right: 0;
+  }
+
+  .footer_text {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .lets_talk_block__content__header {
+    font-size: 6vw;
+  }
+  .lets_talk_block__content__text {
+    font-size: 2.7vw;
+  }
+
+  .address_block {
+    width: unset;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .footer__copyright {
+    font-size: 3.5vw;
+  }
+}

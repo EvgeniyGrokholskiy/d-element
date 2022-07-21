@@ -1,11 +1,17 @@
-.header{
+.header {
   display: flex;
   justify-content: space-between;
-  padding: 47px 83px 0;
+  padding: 47px 6% 0;
   height: 78px;
   width: 100%;
 }
 
 .header_logo {
   transform: translateY(-8px);
+}
+
+.header_hamburger_button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
