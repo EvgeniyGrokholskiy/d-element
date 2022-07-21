@@ -19,7 +19,7 @@
   width: 806px;
 }
 
-.hero_header {
+.hero__header {
   color: $blue_1;
   font-family: Galien,serif;
   font-size: 64px;
@@ -30,27 +30,20 @@
   width: 8em;
 }
 
-.hero_text {
+.hero__text {
+  @include fonts_gilroy(16px,26px,0.06em);
   color: $blue_1;
-  font-family: Gilroy, sans-serif;
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: 0.06em;
-  text-align: left;
   margin-top: 40px;
   width: 26.1em;
 }
 
-.hero_button {
+.hero__button {
+  @include fonts_gilroy(16px,26px,0.04em);
   background-color: $blue_04;
   border: none;
   border-radius: 10px;
   box-shadow: 5px 10px 20px 0 #356EAD33;
   color: $white;
-  font-family: Gilroy,sans-serif;
-  font-size: 16px;
-  line-height: 26px;
-  letter-spacing: 0.04em;
   text-align: center;
   height: 56px;
   width: 220px;

@@ -1,3 +1,12 @@
 $blue_1: #1F3F68;
+$blue_02: #316099;
 $blue_04: #5A98D0;
 $white: #FFFFFF;
+
+@mixin fonts_gilroy($size: 16px,$line-height: 25px, $letter-spacing: 0.05em) {
+  font-family: Gilroy, sans-serif;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  text-align: left;
+}

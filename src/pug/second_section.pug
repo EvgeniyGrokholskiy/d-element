@@ -1,0 +1,16 @@
+
+-
+    const cardData = [
+        {imageName: "first", header: "Bring Technology To Your Comfortable Home", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ", buttonText: "Learn more"},
+        {imageName: "second", header: "Make Your business To Be Better Famous In Internet", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ", buttonText: "Learn more"},
+        {imageName: "third", header: "Build Your Digital Product That Suitable For Your Need", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ", buttonText: "Learn more"}
+    ]
+
+.card_block
+    .card_block__first_item
+        h2.card_block__header What we do to help our client grow in digital era,
+        +card(cardData[1].imageName, cardData[1].header, cardData[1].text, cardData[1].buttonText)
+        
+    .card_block__second_item
+        +card(cardData[0].imageName, cardData[0].header, cardData[0].text, cardData[0].buttonText)
+        +card(cardData[2].imageName, cardData[2].header, cardData[2].text, cardData[2].buttonText)

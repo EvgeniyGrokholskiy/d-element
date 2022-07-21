@@ -1,0 +1,6 @@
+mixin card(imageName, header, text, buttonText)
+    .card(class=`card-${imageName}`)
+        img.card__image(class=`card__image-${imageName}` src=require(`./images/${imageName}_card_image.svg`) alt=imageName)
+        h3.card__header= header
+        p.card__text= text
+        button.card__button= buttonText
