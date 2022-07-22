@@ -1,0 +1,13 @@
+mixin menu(menuData)
+    div(class=`${menuData.className}`)
+        h3(class=`${menuData.className}__header`)= menuData.header
+        ul(class=`${menuData.className}__list`)
+            li(class=`${menuData.className}__list_item`)
+                a(class=`${menuData.className}__list_link` href="#")= menuData.link1
+            li(class=`${menuData.className}__list_item`)
+                a(class=`${menuData.className}__list_link` href="#")= menuData.link2
+            li(class=`${menuData.className}__list_item`)
+                a(class=`${menuData.className}__list_link` href="#")= menuData.link3
+            li(class=`${menuData.className}__list_item`)
+                a(class=`${menuData.className}__list_link` href="#")= menuData.link4
+
