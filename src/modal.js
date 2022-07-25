@@ -1,4 +1,5 @@
 import {Modal} from "./modal_class";
+import {PostFormData} from "./post_form_data_class";
 import {fetch_api} from "./api/fetch_api";
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -11,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const letsTalkButton = document.querySelector(".lets_talk_block__button");
     const modalWindowCloseButton = document.querySelector(".lets_talk_modal__close_button");
 
-
-    const modal = new Modal(form, body, popUpWindow, overlayWindow, modalWindow, fetch_api)
+    const postFormData = new PostFormData(form, fetch_api);
+    const modal = new Modal(form, body, popUpWindow, overlayWindow, modalWindow, postFormData);
 
     letsTalkButton.addEventListener("click", modal.modalOpen);
     modalWindowCloseButton.addEventListener("click", modal.allClose);

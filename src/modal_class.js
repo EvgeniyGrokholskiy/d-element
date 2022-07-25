@@ -1,27 +1,27 @@
 export class Modal {
 
-    constructor(form, body, popUpWindow, overlayWindow, modalWindow, fetch_api) {
+    constructor(form, body, popUpWindow, overlayWindow, modalWindow, postFormData) {
         this.form = form
         this.body = body
         this.popUpWindow = popUpWindow
-        this.overlayWindow = overlayWindow
         this.modalWindow = modalWindow
-        this.fetchApi = fetch_api
+        this.overlayWindow = overlayWindow
+        this.postFormData = postFormData
     }
 
     modalOpen = () => {
+        this.body.classList.add("body_scroll-off");
         this.overlayWindow.classList.add("overlay-open");
         this.modalWindow.classList.add("lets_talk_modal-open");
-        this.body.setAttribute("style", "overflow:hidden; height:100vh;");
         this.overlayWindow.addEventListener("click", this.allClose);
         this.modalWindow.addEventListener("click", (e) => e.stopPropagation());
     }
 
-    allClose= () => {
+    allClose = () => {
+        this.body.classList.remove("body_scroll-off");
         this.overlayWindow.classList.remove("overlay-open");
-        this.body.removeAttribute("style");
-        this.modalWindow.classList.remove("lets_talk_modal-open");
         this.overlayWindow.removeEventListener("click", this.allClose);
+        this.modalWindow.classList.remove("lets_talk_modal-open");
         this.modalWindow.removeEventListener("click", (e) => e.stopPropagation());
     }
 
@@ -61,7 +61,7 @@ export class Modal {
 
     formValidate = (form) => {
         let error = 0;
-        let formReqField = form.querySelectorAll("._req");
+        let formReqField = form.querySelectorAll("[data-req]");
 
         const formData = {
             name: formReqField[0]?.value,
@@ -77,7 +77,7 @@ export class Modal {
                 this.formRemoveError(item)
             }
 
-            if (item.name === "email"&& item.value) {
+            if (item.name === "email" && item.value) {
                 if (!this.emailValidate(item)) {
                     this.formAddError(item, "Not valid email")
                     error = 1
@@ -95,7 +95,7 @@ export class Modal {
             }
         })
         if (error <= 0) {
-            this.fetchApi.postData("http://localhost:8080", formData)
+            this.postFormData.POST(formData)
             this.modalClose(this.modalWindow)
             this.clearForm(formReqField)
             this.allClose()
