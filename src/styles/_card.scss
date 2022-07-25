@@ -1,6 +1,6 @@
 .card {
   border-radius: 10px;
-  box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+  box-shadow: 5px 20px 50px $shadow_color;
   display: flex;
   flex-direction: column;
   height: 525px;

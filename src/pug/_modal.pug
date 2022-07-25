@@ -3,15 +3,15 @@
 .overlay
     .lets_talk_modal
         button.lets_talk_modal__close_button X
-        form(class="form" name="modal_form")
+        form(id= "modalForm" class="form" name="modal_form" enctype="multipart/form-data")
             h2.lets_talk_modal__header SEND US MESSAGE
             label.lets_talk_modal__label Full Name
                 p.lets_talk_modal__error_indicator 123
-                input.lets_talk_modal__input(placeholder="Your Name" name="fullName" class="_req")
+                input.lets_talk_modal__input(placeholder="Your Name" name="fullName" data-req="true")
             label.lets_talk_modal__label Email
                 p.lets_talk_modal__error_indicator 123
-                input.lets_talk_modal__input(placeholder="Your Email" name="email" class="_req")
+                input.lets_talk_modal__input(placeholder="Your Email" name="email" data-req="true")
             label.lets_talk_modal__label Message
                 p.lets_talk_modal__error_indicator 123
-                textarea.lets_talk_modal__textarea(placeholder="Your Message" name="message" class="_req")
+                textarea.lets_talk_modal__textarea(placeholder="Your Message" name="message" data-req="true")
             button.lets_talk_modal__send_button SUBMIT
