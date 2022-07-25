@@ -1,43 +1,24 @@
-export class Modal {
-
-    constructor(form, body, popUpWindow, overlayWindow, modalWindow, postFormData) {
-        this.form = form
-        this.body = body
+export class FormValidate {
+    constructor(form, popUpWindow, modalWindow, modalWindowController, popupWindowController, postFormData) {
+        this.form = form;
         this.popUpWindow = popUpWindow
         this.modalWindow = modalWindow
-        this.overlayWindow = overlayWindow
         this.postFormData = postFormData
-    }
-
-    modalOpen = () => {
-        this.body.classList.add("body_scroll-off");
-        this.overlayWindow.classList.add("overlay-open");
-        this.modalWindow.classList.add("lets_talk_modal-open");
-        this.overlayWindow.addEventListener("click", this.allClose);
-        this.modalWindow.addEventListener("click", (e) => e.stopPropagation());
-    }
-
-    allClose = () => {
-        this.body.classList.remove("body_scroll-off");
-        this.overlayWindow.classList.remove("overlay-open");
-        this.overlayWindow.removeEventListener("click", this.allClose);
-        this.modalWindow.classList.remove("lets_talk_modal-open");
-        this.modalWindow.removeEventListener("click", (e) => e.stopPropagation());
-    }
-
-    modalClose = (modalWindowNode) => {
-        modalWindowNode.classList.remove("lets_talk_modal-open");
+        this.modalWindowController = modalWindowController
+        this.popupWindowController = popupWindowController
     }
 
     formAddError = (input, message) => {
         const p = input.previousSibling
         p.innerText = message
-        input.previousSibling.classList.add("_error")
+        p.classList.add("_error")
         input.classList.add("_error")
     }
 
     formRemoveError = (input) => {
-        input.previousSibling.classList.remove("_error")
+        const p = input.previousSibling
+        p.classList.remove("_error")
+        p.innerText = ""
         input.classList.remove("_error")
     }
 
@@ -47,16 +28,6 @@ export class Modal {
 
     clearForm = (formReqField) => {
         formReqField.forEach(item => item.value = "")
-    }
-
-    popupWindowCloseTimeout = (popUpWindow) => {
-        setTimeout(() => {
-            popUpWindow.classList.remove("popUp-open")
-        }, 3000)
-    }
-
-    popupOpen = (popupNode) => {
-        popupNode.classList.add("popUp-open")
     }
 
     formValidate = (form) => {
@@ -96,11 +67,11 @@ export class Modal {
         })
         if (error <= 0) {
             this.postFormData.POST(formData)
-            this.modalClose(this.modalWindow)
+            this.modalWindowController.modalClose(this.modalWindow)
             this.clearForm(formReqField)
-            this.allClose()
-            this.popupOpen(this.popUpWindow)
-            this.popupWindowCloseTimeout(this.popUpWindow)
+            this.modalWindowController.allClose()
+            this.popupWindowController.popupOpen(this.popUpWindow)
+            this.popupWindowController.popupWindowCloseTimeout(this.popUpWindow)
         }
     }
 
