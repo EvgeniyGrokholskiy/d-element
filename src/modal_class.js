@@ -7,19 +7,9 @@ export class Modal {
         this.overlayWindow = overlayWindow
         this.modalWindow = modalWindow
         this.fetchApi = fetch_api
-        this.modalOpen = this.modalOpen.bind(this)
-        this.allClose = this.allClose.bind(this)
-        this.modalClose = this.modalClose.bind(this)
-        this.formAddError = this.formAddError.bind(this)
-        this.formRemoveError = this.formRemoveError.bind(this)
-        this.emailValidate = this.emailValidate.bind(this)
-        this.clearForm = this.clearForm.bind(this)
-        this.popupWindowCloseTimeout = this.popupWindowCloseTimeout.bind(this)
-        this.popupOpen = this.popupOpen.bind(this)
-        this.formValidate = this.formValidate.bind(this)
     }
 
-    modalOpen() {
+    modalOpen = () => {
         this.overlayWindow.classList.add("overlay-open");
         this.modalWindow.classList.add("lets_talk_modal-open");
         this.body.setAttribute("style", "overflow:hidden; height:100vh;");
@@ -27,7 +17,7 @@ export class Modal {
         this.modalWindow.addEventListener("click", (e) => e.stopPropagation());
     }
 
-    allClose() {
+    allClose= () => {
         this.overlayWindow.classList.remove("overlay-open");
         this.body.removeAttribute("style");
         this.modalWindow.classList.remove("lets_talk_modal-open");
@@ -35,41 +25,41 @@ export class Modal {
         this.modalWindow.removeEventListener("click", (e) => e.stopPropagation());
     }
 
-    modalClose(modalWindowNode) {
+    modalClose = (modalWindowNode) => {
         modalWindowNode.classList.remove("lets_talk_modal-open");
     }
 
-    formAddError(input, message) {
+    formAddError = (input, message) => {
         const p = input.previousSibling
         p.innerText = message
         input.previousSibling.classList.add("_error")
         input.classList.add("_error")
     }
 
-    formRemoveError(input) {
+    formRemoveError = (input) => {
         input.previousSibling.classList.remove("_error")
         input.classList.remove("_error")
     }
 
-    emailValidate(input) {
+    emailValidate = (input) => {
         return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(input.value)
     }
 
-    clearForm(formReqField) {
+    clearForm = (formReqField) => {
         formReqField.forEach(item => item.value = "")
     }
 
-    popupWindowCloseTimeout(popUpWindow) {
+    popupWindowCloseTimeout = (popUpWindow) => {
         setTimeout(() => {
             popUpWindow.classList.remove("popUp-open")
         }, 3000)
     }
 
-    popupOpen(popupNode) {
+    popupOpen = (popupNode) => {
         popupNode.classList.add("popUp-open")
     }
 
-    formValidate(form) {
+    formValidate = (form) => {
         let error = 0;
         let formReqField = form.querySelectorAll("._req");
         const formDate = {
@@ -85,7 +75,7 @@ export class Modal {
                 this.formRemoveError(item)
             }
 
-            if (item.name === "email") {
+            if (item.name === "email"&& item.value) {
                 if (!this.emailValidate(item)) {
                     this.formAddError(item, "Not valid email")
                     error = 1
