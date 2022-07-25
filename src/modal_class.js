@@ -62,11 +62,13 @@ export class Modal {
     formValidate = (form) => {
         let error = 0;
         let formReqField = form.querySelectorAll("._req");
-        const formDate = {
+
+        const formData = {
             name: formReqField[0]?.value,
             email: formReqField[1]?.value,
             message: formReqField[2].value
         };
+
         formReqField.forEach((item) => {
             if (!item.value.length) {
                 this.formAddError(item, `${item.name} is require!`)
@@ -93,7 +95,7 @@ export class Modal {
             }
         })
         if (error <= 0) {
-            this.fetchApi.postData("http://localhost:8080", formDate)
+            this.fetchApi.postData("http://localhost:8080", formData)
             this.modalClose(this.modalWindow)
             this.clearForm(formReqField)
             this.allClose()

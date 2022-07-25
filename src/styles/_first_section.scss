@@ -43,7 +43,7 @@
   background-color: $blue_04;
   border: none;
   border-radius: 10px;
-  box-shadow: 5px 10px 20px 0 #356EAD33;
+  box-shadow: 5px 10px 20px 0 $shadow_color_2;
   color: $white;
   text-align: center;
   height: 56px;
@@ -61,6 +61,7 @@
 
 @media screen and (max-width: 1000px) {
   .hero:after {
+    display: none;
     background-image: none;
   }
 }

@@ -2,6 +2,9 @@ $blue_1: rgb(31, 63, 104);
 $blue_02: #316099;
 $blue_03: #356EAD;
 $blue_04: #5A98D0;
+$gray: gray;
+$shadow_color: rgba(16, 112, 177, 0.2);
+$shadow_color_2: rgba(53, 110, 173, 0.2);
 $white: #FFFFFF;
 
 @mixin fonts_gilroy($size: 16px,$line-height: 25px, $letter-spacing: 0.05em) {
@@ -13,7 +16,7 @@ $white: #FFFFFF;
 }
 
 .button_hover {
-  box-shadow: 2px 2px 0 gray;
+  box-shadow: 2px 2px 0 $gray;
   transform: scale(1.1);
 }
 
