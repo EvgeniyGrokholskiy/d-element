@@ -1,15 +1,14 @@
 export class FormValidate {
-    constructor(form) {
-        this.form = form;
+
+    emailValidate = (value) => {
+        return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value);
     }
 
-    emailValidate = (input) => {
-        return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(input.value);
-    }
+    notEmptyField = (value) => !!value;
 
-    formValidate = () => {
+    formValidate = (form) => {
 
-        let formReqField = this.form.querySelectorAll("[data-req]");
+        let formReqField = form.querySelectorAll("[data-req]");
 
         const formError = {
             name: "",
@@ -18,15 +17,16 @@ export class FormValidate {
         };
 
         formReqField.forEach((item) => {
-            if (!item.value.length) {
+            if (!this.notEmptyField(item.value)) {
                 formError[item.name] = `${item.name} is require!`
             }
 
             if (item.name === "email" && item.value) {
-                if (!this.emailValidate(item)) {
+                if (!this.emailValidate(item.value)) {
                     formError.email = "Not valid email"
                 }
             }
+
             if (item.name === "message" && item.value.length > 256) {
                 if (!item.value.length < 256) {
                     formError.message = "Message must be short of 256 symbols"

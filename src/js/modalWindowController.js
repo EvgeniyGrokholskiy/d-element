@@ -1,9 +1,10 @@
 export class ModalWindowController {
 
-    constructor(body, overlayWindow, modalWindow) {
+    constructor(body, overlayWindow, modalWindow, clearForm) {
         this.body = body;
+        this.clearForm = clearForm;
+        this.modalWindow = modalWindow;
         this.overlayWindow = overlayWindow;
-        this.modalWindow = modalWindow
     }
 
     modalOpen = () => {
@@ -15,15 +16,12 @@ export class ModalWindowController {
     }
 
     allClose = () => {
+        this.clearForm.clearForm();
         this.body.classList.remove("body_scroll-off");
         this.overlayWindow.classList.remove("overlay-open");
         this.overlayWindow.removeEventListener("click", this.allClose);
         this.modalWindow.classList.remove("lets_talk_modal-open");
         this.modalWindow.removeEventListener("click", (e) => e.stopPropagation());
-    }
-
-    modalClose = () => {
-        this.modalWindow.classList.remove("lets_talk_modal-open");
     }
 
 }

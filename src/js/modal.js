@@ -1,3 +1,4 @@
+import {ClearForm} from "./clearForm";
 import {fetch_api} from "../api/fetch_api";
 import {FormValidate} from "./formValidate";
 import {FormController} from "./formController";
@@ -15,11 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const letsTalkButton = document.querySelector(".lets_talk_block__button");
     const modalWindowCloseButton = document.querySelector(".lets_talk_modal__close_button");
 
-    const formExternalValidate = new FormValidate(form);
+    const clearForm = new ClearForm(form);
+    const formExternalValidate = new FormValidate();
     const postFormData = new PostFormData(form, fetch_api);
     const popupWindowController = new PopupWindowController(popUpWindow);
     const formController = new FormController(form, formExternalValidate);
-    const modalWindowController = new ModalWindowController(body, overlayWindow, modalWindow);
+    const modalWindowController = new ModalWindowController(body, overlayWindow, modalWindow, clearForm);
 
     letsTalkButton.addEventListener("click", modalWindowController.modalOpen);
 
@@ -30,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const isError = formController.isValidateError(form);
             if (!isError) {
-                const status = await postFormData.POST()
+                const status = await postFormData.POST();
                 if (status === "ok") {
-                    modalWindowController.modalClose();
-                    formController.clearForm();
+                    form.reset();
+                    clearForm.clearForm();
                     modalWindowController.allClose();
                     popupWindowController.popupOpen();
                     popupWindowController.popupWindowCloseTimeout();

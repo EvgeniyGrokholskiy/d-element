@@ -23,10 +23,6 @@ export class FormController {
         input.classList.remove("_error");
     }
 
-    clearForm = () => {
-        this.formReqField.forEach(item => item.value = "")
-    };
-
     isValidateError = () => {
 
         const error = this.formValidate.formValidate(this.form);
