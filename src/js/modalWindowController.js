@@ -22,8 +22,8 @@ export class ModalWindowController {
         this.modalWindow.removeEventListener("click", (e) => e.stopPropagation());
     }
 
-    modalClose = (modalWindowNode) => {
-        modalWindowNode.classList.remove("lets_talk_modal-open");
+    modalClose = () => {
+        this.modalWindow.classList.remove("lets_talk_modal-open");
     }
 
 }

@@ -1,12 +1,15 @@
 export class PopupWindowController {
-
-    popupOpen = (popUpWindow) => {
-        popUpWindow.classList.add("popUp-open");
+    constructor(popUpWindow) {
+        this.popUpWindow = popUpWindow
     }
 
-    popupWindowCloseTimeout = (popUpWindow) => {
+    popupOpen = () => {
+        this.popUpWindow.classList.add("popUp-open");
+    }
+
+    popupWindowCloseTimeout = () => {
         setTimeout(() => {
-            popUpWindow.classList.remove("popUp-open");
+            this.popUpWindow.classList.remove("popUp-open");
         }, 3000)
     }
 }

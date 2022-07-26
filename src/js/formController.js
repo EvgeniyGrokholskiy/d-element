@@ -1,49 +1,50 @@
 export class FormController {
 
-    constructor(formValidate) {
+    constructor(form,formValidate) {
+        this.form = form;
         this.formValidate = formValidate;
+        this.formReqField = form.querySelectorAll("[data-req]")
     }
 
-    formAddError = (form, inputName, message) => {
-        const selectorName = `[name=${inputName}]`
-        const input = form.querySelector(`${selectorName}`);
+    formAddError = (inputName, message) => {
+        const selector = `[name=${inputName}]`
+        const input = this.form.querySelector(`${selector}`);
         const p = input.previousSibling;
         p.innerText = message;
         p.classList.add("_error");
         input.classList.add("_error");
     }
 
-    formRemoveError = (form, inputName) => {
-        const selectorName = `[name=${inputName}]`
-        const input = form.querySelector(`${selectorName}`)
+    formRemoveError = (inputName) => {
+        const selector = `[name=${inputName}]`
+        const input = this.form.querySelector(`${selector}`)
         const p = input.previousSibling;
         p.innerText = "";
         input.classList.remove("_error");
     }
 
-    clearForm = (form) => {
-        const formReqField = form.querySelectorAll("[data-req]")
-        formReqField.forEach(item => item.value = "")
+    clearForm = () => {
+        this.formReqField.forEach(item => item.value = "")
     };
 
-    validate = (form) => {
+    isValidateError = () => {
 
-        const error = this.formValidate.validate(form);
+        const error = this.formValidate.formValidate(this.form);
 
         if (error.name || error.email || error.message) {
 
             for (const [key, value] of Object.entries(error)) {
                 if (key && value.length) {
-                    this.formAddError(form, key, value);
+                    this.formAddError(key, value);
                 } else {
-                    this.formRemoveError(form, key);
+                    this.formRemoveError(key);
                 }
             }
 
-            return false
+            return true
 
         } else {
-            return true
+            return false
         }
 
     };
