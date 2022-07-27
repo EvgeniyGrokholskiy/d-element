@@ -6,6 +6,7 @@ if (process.env.NODE_ENV === "production") {
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
     mode: mode,
@@ -23,6 +24,11 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.pug"
+        }),
+        new CompressionPlugin({
+            //test: /\.js(\?.*)?$/i,
+            test: /.js$|.css$/,
+            exclude: /(node_modules)/
         })
     ],
     module: {
