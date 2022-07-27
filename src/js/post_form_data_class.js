@@ -13,11 +13,11 @@ export class PostFormData {
     POST = async () => {
         try {
             this.dataFields.forEach(item => item.setAttribute("disable", "true"));
-            const response = await this.fetchAPI.postData("http://localhost:8080", this.formData);
-            return "ok"
+            const response = await this.fetchAPI.postData(this.formData);
+            return "ok";
         } catch (error) {
             console.error(error)
-            return  error
+            return  error;
         } finally {
             this.dataFields.forEach(item => item.removeAttribute("disable"));
         }

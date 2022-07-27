@@ -1,6 +1,6 @@
 export const fetch_api = {
-    postData(url, data) {
-        return fetch(url, {
+    postData(data) {
+        return fetch("http://localhost:8080", {
             method: "POST",
             body: JSON.stringify(data)
         }).then(data => data)

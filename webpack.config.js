@@ -6,6 +6,7 @@ if (process.env.NODE_ENV === "production") {
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
     mode: mode,
@@ -18,8 +19,12 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [
+        new CompressionPlugin({
+            test: /\.(js|css|svg)$/,
+            exclude: /(node_modules)/
+        }),
         new MiniCssExtractPlugin({
-            filename:`[name].[contenthash].css`
+            filename: `[name].[contenthash].css`
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.pug"
