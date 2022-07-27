@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const isError = formController.isValidateError(form);
             if (!isError) {
                 const status = await postFormData.POST();
-                if (status === "ok") {
+                if (status/* === "ok"*/) {
                     form.reset();
                     clearForm.clearForm();
                     modalWindowController.allClose();
