@@ -6,12 +6,12 @@
         form(id= "modalForm" class="form" name="modal_form" enctype="multipart/form-data")
             h2.lets_talk_modal__header SEND US MESSAGE
             label.lets_talk_modal__label Full Name
-                p.lets_talk_modal__error_indicator 123
+                p.lets_talk_modal__error_indicator(data-name="name") 123
                 input.lets_talk_modal__input(placeholder="Your Name" name="name" data-req="true")
             label.lets_talk_modal__label Email
-                p.lets_talk_modal__error_indicator 123
+                p.lets_talk_modal__error_indicator(data-name="email") 123
                 input.lets_talk_modal__input(placeholder="Your Email" name="email" data-req="true")
             label.lets_talk_modal__label Message
-                p.lets_talk_modal__error_indicator 123
+                p.lets_talk_modal__error_indicator(data-name="message") 123
                 textarea.lets_talk_modal__textarea(placeholder="Your Message" name="message" data-req="true")
             button.lets_talk_modal__send_button SUBMIT
