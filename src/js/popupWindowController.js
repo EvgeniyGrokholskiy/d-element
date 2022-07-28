@@ -7,7 +7,7 @@ export class PopupWindowController {
         this.popUpWindow.classList.add("popUp-open");
     }
 
-    popupWindowCloseTimeout = () => {
+    popupWindowIsCloseByTimeout = () => {
         setTimeout(() => {
             this.popUpWindow.classList.remove("popUp-open");
         }, 3000)

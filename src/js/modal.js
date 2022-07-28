@@ -1,3 +1,4 @@
+import {Dom} from "./dom";
 import {ClearForm} from "./clearForm";
 import {fetch_api} from "../api/fetch_api";
 import {FormValidate} from "./formValidate";
@@ -8,38 +9,42 @@ import {ModalWindowController} from "./modalWindowController";
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const body = document.querySelector("body");
-    const form = document.querySelector(".form");
-    const popUpWindow = document.querySelector(".popUp");
-    const overlayWindow = document.querySelector(".overlay");
-    const modalWindow = document.querySelector(".lets_talk_modal");
-    const letsTalkButton = document.querySelector(".lets_talk_block__button");
-    const modalWindowCloseButton = document.querySelector(".lets_talk_modal__close_button");
+    const dom = new Dom();
 
-    const clearForm = new ClearForm(form);
+    const clearForm = new ClearForm(dom.getForm());
     const formExternalValidate = new FormValidate();
-    const postFormData = new PostFormData(form, fetch_api);
-    const popupWindowController = new PopupWindowController(popUpWindow);
-    const formController = new FormController(form, formExternalValidate);
-    const modalWindowController = new ModalWindowController(body, overlayWindow, modalWindow, clearForm);
+    const postFormData = new PostFormData(fetch_api);
+    const popupWindowController = new PopupWindowController(dom.getPopupWindow());
+    const formController = new FormController(dom.getFormReqFieldArray(), dom.getFormErrorIndicatorArray(), formExternalValidate);
+    const modalWindowController = new ModalWindowController(dom.getBody(), dom.getOverlayWindow(), dom.getModalWindow(), clearForm);
 
-    letsTalkButton.addEventListener("click", modalWindowController.modalOpen);
+    dom.getModalWindowOpenButton().addEventListener("click", modalWindowController.modalOpen);
 
-    modalWindowCloseButton.addEventListener("click", modalWindowController.allClose);
+    dom.getModalWindowCloseButton().addEventListener("click", modalWindowController.allClose);
 
-    form.addEventListener("submit", async (event) => {
+    dom.getForm().addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            const isError = formController.isValidateError(form);
+            const isError = formController.isValidateError(dom.getForm());
             if (!isError) {
-                const status = await postFormData.POST();
-                if (status/* === "ok"*/) {
-                    form.reset();
+
+                try {
+                    formController.disableReqFields()
+                    const status = await postFormData.POST(dom.getFormData());
+                    if (status/* === "ok"*/) {
+                        dom.getForm().reset();
                     clearForm.clearForm();
                     modalWindowController.allClose();
                     popupWindowController.popupOpen();
-                    popupWindowController.popupWindowCloseTimeout();
+                    popupWindowController.popupWindowIsCloseByTimeout();
                 }
+                } catch (e) {
+                    console.log(e)
+                }
+                finally {
+                    formController.enableReqFields()
+                }
+
             }
         }
     );

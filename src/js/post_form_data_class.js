@@ -1,25 +1,19 @@
 export class PostFormData {
 
-    constructor(form, fetchAPI) {
-        this.dataFields = form.querySelectorAll("[data-req]");
+    constructor(fetchAPI) {
         this.fetchAPI = fetchAPI;
-        this.formData = {
-            name: this.dataFields[0],
-            email: this.dataFields[1],
-            message: this.dataFields[2]
-        }
     };
 
-    POST = async () => {
+    POST = async (formData) => {
         try {
-            this.dataFields.forEach(item => item.setAttribute("disable", "true"));
-            const response = await this.fetchAPI.postData(this.formData);
+            //this.dataFields.forEach(item => item.setAttribute("disable", "true"));
+            const response = await this.fetchAPI.postData(formData);
             return "ok";
         } catch (error) {
             console.error(error)
             return  error;
         } finally {
-            this.dataFields.forEach(item => item.removeAttribute("disable"));
+            //this.dataFields.forEach(item => item.removeAttribute("disable"));
         }
     };
 }
