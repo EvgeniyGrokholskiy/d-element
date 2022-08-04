@@ -1,9 +1,8 @@
 export class ClearForm {
 
-    constructor(form) {
-        this.form = form;
-        this.formReqFields = form.querySelectorAll("[data-req]");
-        this.formErrorIndicator = Array.from(this.formReqFields).map(item => item.previousSibling);
+    constructor(formReqFields, formErrorIndicator) {
+        this.formReqFields = formReqFields;
+        this.formErrorIndicator = formErrorIndicator;
     }
 
     clearForm = () => {

@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dom = new Dom();
 
-    const clearForm = new ClearForm(dom.getForm());
     const formExternalValidate = new FormValidate();
     const postFormData = new PostFormData(fetch_api);
     const popupWindowController = new PopupWindowController(dom.getPopupWindow());
+    const clearForm = new ClearForm(dom.getFormReqFieldArray(),dom.getFormErrorIndicatorArray());
     const formController = new FormController(dom.getFormReqFieldArray(), dom.getFormErrorIndicatorArray(), formExternalValidate);
     const modalWindowController = new ModalWindowController(dom.getBody(), dom.getOverlayWindow(), dom.getModalWindow(), clearForm);
 

@@ -25,8 +25,8 @@ export class FormController {
         input.classList.remove("_error");
     }
 
-    disableReqFields = () => this.formReqFields.forEach(item => item.setAttribute("disabled","true"));
     enableReqFields = () => this.formReqFields.forEach(item => item.removeAttribute("disabled"));
+    disableReqFields = () => this.formReqFields.forEach(item => item.setAttribute("disabled","true"));
 
     isValidateError = () => {
 
